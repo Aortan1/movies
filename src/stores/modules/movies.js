@@ -7,11 +7,15 @@ const state = {
 }
 
 const getters = {
-
+    getMovies: state => {
+        return state.movies
+    }
 }
 
 const mutations = {
-
+    [types.FETCH_MOVIES](state, { moviesList }){ // ??
+        state.movies = moviesList
+    }
 }
 
 const actions = {
@@ -20,6 +24,9 @@ const actions = {
             .then(data => {
                 let moviesList = data.data.Search
                 commit('FETCH_MOVIES', {moviesList})
+
+                console.log("search: ", {search})
+                console.log("movieList: ", moviesList)
 
             })
 
