@@ -15,6 +15,9 @@ const getters = {
 const mutations = {
     [types.FETCH_MOVIES](state, { moviesList }){ // ??
         state.movies = moviesList
+    },
+    [types.SET_COUNTER](state){
+        state.con
     }
 }
 
@@ -31,6 +34,11 @@ const actions = {
             })
 
             .catch(err => console.log(err))
+    },
+    startCounter({ commit }){
+      setInterval(()=>{
+          commit('FETCH_MOVIES', {moviesList})
+      }, 10000)
     }
 }
 

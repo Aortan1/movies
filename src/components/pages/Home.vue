@@ -2,7 +2,7 @@
     <div class="hello">
         <div class="hello container">
             <div class="field">
-                <label for="" class="label"> Введите название фильма </label>
+                <label for="" class="label"> Введите название фильма {{ counter }} </label>
                 <div class="control row">
                     <input type="text" class="input" v-model="searchInput" placeholder="Movie name">
                     <button  type="button" name="btn" @click="fetchMovies()">Search</button>
@@ -32,7 +32,13 @@
         computed:{
           movies(){
               return this.$store.getters.getMovies
+          },
+          counter(){
+              return this.$store.getters.counter //
           }
+        },
+        mounted(){
+          this.$store.dispatch('startCounter',{}) // вызов акшена startCounter
         },
 
         methods: {
